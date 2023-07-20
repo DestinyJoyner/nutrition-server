@@ -9,6 +9,18 @@ const getAll = async() => {
     }
 }
 
+const getOne = async(id) => {
+    try {
+        const getOne = await db.one("SELECT * FROM nutrition WHERE nbd_survey_number = $1", id)
+        return getOne
+        
+    } catch (error) {
+        return error
+    }
+}
+
+
 module.exports = {
-    getAll
+    getAll,
+    getOne
 }
