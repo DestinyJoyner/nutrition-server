@@ -1,8 +1,14 @@
 const express = require("express")
 const router = express.Router()
 
-router.get("/", (req, res) => {
-    res.status(200).json("nutrition page")
+const {
+    getAll
+} = require("../query.js")
+
+router.get("/", async (req, res) => {
+    const all = await getAll()
+
+    res.status(200).json(all)
 })
 
 
